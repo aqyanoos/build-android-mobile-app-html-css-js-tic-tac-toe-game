@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Moving Ball</title>
+</head>
+<body>
+    <header class="flex-3 page-hdr">
+        <div class="menu-btn" onclick="toggleMenu()">
+            <svg version="1.1" id="Layer_1" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 100 100"
+                enable-background="new 0 0 100 100">
+                <g>
+                    <path fill="#055" d="M17.563,30.277h0.012c0,1.245,1.004,2.254,2.246,2.267v0.002h60.359v-0.001c1.248-0.006,2.259-1.018,2.259-2.268h0.01
+                   l0-10.459h0c-0.002-1.251-1.017-2.265-2.269-2.265l0,0H19.821v0c0,0,0,0,0,0c-1.253,0-2.269,1.017-2.269,2.269
+                   c0,0.039,0.01,0.076,0.012,0.115L17.563,30.277z" />
+                    <path fill="#055" d="M80.179,42.504L80.179,42.504H19.821v0c0,0,0,0,0,0c-1.253,0-2.269,1.017-2.269,2.269c0,0.039,0.01,0.076,0.012,0.115
+                   l0,10.34h0.012c0,1.245,1.004,2.254,2.246,2.267v0.002h60.359v-0.001c1.248-0.006,2.259-1.018,2.259-2.268h0.01l0-10.459h0
+                   C82.446,43.518,81.431,42.504,80.179,42.504z" />
+                    <path fill="#055" d="M80.179,67.454L80.179,67.454H19.821l0,0c0,0,0,0,0,0c-1.253,0-2.269,1.017-2.269,2.269c0,0.039,0.01,0.076,0.012,0.115
+                   l0,10.34h0.012c0,1.245,1.004,2.254,2.246,2.267v0.002h60.359v-0.001c1.248-0.006,2.259-1.019,2.259-2.269h0.01l0-10.459h0
+                   C82.446,68.468,81.431,67.454,80.179,67.454z" />
+                </g>
+            </svg>
+        </div>
+        <h1 class="title">Canvas Animation</h1>
+    </header>
+
+    <div class="page">
+        <canvas id="myCanvas"></canvas>
+        <div class="flex-1">
+            <div class="start btn">START</div>
+            <div class="stop btn">STOP</div>
+        </div>
+    </div>
+
+    <aside class="side-menu">
+        <div class="side-menu-container">
+            <div class="side-menu-hdr">
+                <img src="logo.png" alt="aqyanoos company logo">
+                <div id="close-menu-btn" onclick="toggleMenu()">❌</div>
+            </div>
+            <div class="side-menu-items">
+                <a href="index.html">Tic Tac Toe Game</a>
+                <a href="canvas.html">Canvas</a>
+                <a href="https://www.youtube.com/@CodingAqyanoos">YouTube</a>
+                <a href="https://aqyanoos.com">Website</a>
+                <a href="https://github.com/coding-aqyanoos">GitHub</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="menu-ftr">
+                &copy; AQYANOOS | Ver 1.0.1
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        const canvas = document.getElementById("myCanvas")
+        const ctx = canvas.getContext("2d");
+        const startBtn = document.querySelector("div.start")
+        const stopBtn = document.querySelector("div.stop")
+
+        canvas.width = 250;
+        canvas.height = 470;
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dx = 2;
+        let dy = 2;
+        const ballRad = 23;
+        let animationId = 0;
+
+        function createCircle() {
+            ctx.beginPath()
+            ctx.arc(x, y, ballRad, 0, Math.PI * 2)
+            ctx.fillStyle = "#fff"
+            ctx.fill()
+            ctx.closePath()
+        }
+
+        createCircle()
+
+        function changePosition() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            createCircle()
+
+            if( x + dx > canvas.width - ballRad || x + dx < ballRad) {
+                dx = -dx
+            }
+
+            if(y + dy > canvas.height - ballRad || y + dy < ballRad) {
+                dy = -dy
+            }
+
+            x = x + dx;
+            y = y + dy;
+
+            animationId =  requestAnimationFrame(changePosition)
+        }
+
+        startBtn.onclick = changePosition;
+
+        stopBtn.onclick = function() {
+            cancelAnimationFrame(animationId)
+        }
+    </script>
+    <script src="share.js"></script>
+</body>
+</html>

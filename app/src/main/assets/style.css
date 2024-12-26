@@ -1,0 +1,294 @@
+body {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.flex-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.page-hdr {
+    margin-top: 15px;
+}
+
+.menu-btn {
+    margin-left: 20px;
+}
+
+h1.title {
+    margin: 0;
+    margin-left: 15px;
+}
+
+.page {
+    padding: 25px 15px;
+}
+
+#notification {
+    border-top: 1px dotted #055;
+    border-bottom: 1px dashed #055;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: yellow;
+    color: #fff;
+    animation-name: notAnim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.players input {
+    width: 40%;
+    height: 18px;
+    border: 1px solid #008eff;
+    border-radius: 3px;
+    padding: 2px 5px;
+    text-align: center;
+}
+
+.players input:focus {
+    outline: 2px solid blue;
+}
+
+.name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.my-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #e6e6e6;
+    box-shadow: 0 0 2px 1px gray;
+    padding: 3px 6px;
+    border-radius: 6px;
+}
+
+.game-btn {
+    width: 150px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btn-1 {
+    background: #00ac00;
+    border: 2px solid #005311;
+}
+
+.btn-2 {
+    background: #ff2f00;
+    border: 2px solid #530000;
+}
+
+.game-row div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #055;
+    text-align: center;
+    font-size: 70px;
+    padding-top: 15px; // this is because the text appears a little bit on top of the div
+}
+
+.turn {
+    animation-name: playerTurn;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+.winner-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #00800066;
+    transition: width 2s, height 2s, top 2s, left 2s; 
+}
+
+.winner-popup.display {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.winner-container {
+    border-radius: 15px;
+    width: 90%;
+    height: 80vw;
+    background-color: #73fe69;
+    background-image: url("002.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: width 2s;
+    overflow: hidden;
+    color: #fff;
+    text-shadow: 3px 3px 1px #33fa33;
+    text-align: center;
+}
+
+.winner-name {
+    font-family: cursive;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.txt-big {
+    font-size: 50px;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.no-events {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.menu-btn {
+    margin-left: 20px;
+}
+
+.side-menu {
+    background: #0885;
+    position: fixed;
+    top: 0;
+    width: 0;
+    transition: width 2s;
+    height: 100%;
+    overflow: hidden;
+}
+
+.side-menu.open {
+    width: 100%;
+}
+
+.side-menu-hdr img {
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.side-menu-container {
+    background: #088;
+    color: #fff;
+    width: 50%;
+    height: inherit;
+    white-space: nowrap;
+}
+
+.side-menu-items {
+    padding: 15px 10px 20px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu-items a {
+    margin-top: 20px;
+}
+
+.side-menu-hdr {
+    display: flex;
+    justify-content: space-between;
+}
+
+#close-menu-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: yellow;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.menu-ftr {
+    position: fixed;
+    bottom: 20px;
+    font-size: 12px;
+    text-align: center;
+    width: 0;
+    overflow: hidden;
+}
+
+.side-menu.open .menu-ftr {
+    width: inherit;
+}
+
+.about img {
+    width: 90%;
+    height: auto;
+    border: 1px solid #088;
+    border-radius: 15px;
+}
+
+.txt-c {
+    text-align: center;
+}
+
+canvas {
+    margin: 20px auto;
+    display: block;
+    background: #127629;
+}
+
+@keyframes playerTurn {
+    0% {outline: 4px solid blue;}
+    25% {outline: 4px solid red;}
+    50% {outline: 4px solid green;}
+    75% {outline: 4px solid #ff00f2;}
+    100% {outline: 4px solid blue;}
+}
+
+@keyframes notAnim {
+    0% {background: #00ad00;}
+    20% {background: #ff0000;}
+    40% {background: #d400c6;}
+    60% {background: #00e1ff;}
+    80% {background: #00f;}
+    100% {background: #00ad00;}
+}
